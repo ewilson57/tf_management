@@ -3,6 +3,17 @@ provider "azurerm" {
   features {}
 }
 
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "azure-dev"
+
+    workspaces {
+      name = "tf_management"
+    }
+  }
+}
+
 resource "azurerm_windows_virtual_machine" "win-host" {
   resource_group_name        = "management-rg"
   name                       = "win-host"
