@@ -1,11 +1,11 @@
 provider "azurerm" {
-  version = "=2.12.0"
+  version = ">=2.12.0"
   features {}
 }
 
 terraform {
   backend "remote" {
-    hostname = "app.terraform.io"
+    hostname     = "app.terraform.io"
     organization = "azure-dev"
 
     workspaces {
