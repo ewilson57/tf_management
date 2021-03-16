@@ -63,4 +63,3 @@ resource "azurerm_linux_virtual_machine" "ol8" {
     write_accelerator_enabled = false
   }
 }
-
