@@ -33,7 +33,7 @@ resource "azurerm_windows_virtual_machine" "win-host" {
 
 resource "azurerm_linux_virtual_machine" "ol8" {
   name     = "ol8"
-  location = "southcentralus"
+  location = var.location
 
   resource_group_name = "management-rg"
   computer_name       = "ol8"
