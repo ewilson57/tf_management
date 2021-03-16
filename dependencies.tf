@@ -25,7 +25,10 @@ resource "azurerm_network_security_group" "management" {
     destination_port_ranges = [
       "22",
       "80",
-      "3389"
+      "3389",
+      "5985",
+      "5986",
+      "9090"
     ]
     source_address_prefix      = var.router_wan_ip
     destination_address_prefix = "*"
