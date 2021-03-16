@@ -49,7 +49,7 @@ resource "azurerm_linux_virtual_machine" "ol8" {
   source_image_reference {
     offer     = "Oracle-Linux"
     publisher = "Oracle"
-    sku       = "ol83-lvm-gen2"
+    sku       = "ol83-lvm"
     version   = "latest"
   }
   network_interface_ids = [
