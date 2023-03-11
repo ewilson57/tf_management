@@ -10,5 +10,5 @@ variable "location" {
 variable "router_wan_ip" {}
 variable "admin_username" {}
 variable "admin_password" {}
-
+variable "admin_ssh_key" {}
 

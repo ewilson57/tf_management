@@ -1,9 +1,10 @@
-provider "azurerm" {
-  version = "=2.12.0"
-  features {}
-}
-
 terraform {
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "3.47.0"
+    }
+  }
   backend "remote" {
     hostname = "app.terraform.io"
     organization = "azure-dev"
@@ -12,6 +13,10 @@ terraform {
       name = "tf_management"
     }
   }
+}
+
+provider "azurerm" {
+  features {}
 }
 
 resource "azurerm_windows_virtual_machine" "win-host" {
