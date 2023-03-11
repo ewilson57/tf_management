@@ -25,7 +25,10 @@ resource "azurerm_network_security_group" "management" {
     destination_port_ranges = [
       "22",
       "80",
-      "3389"
+      "3389",
+      "5985",
+      "5986",
+      "9090"
     ]
     source_address_prefix      = var.router_wan_ip
     destination_address_prefix = "*"
@@ -68,4 +71,23 @@ resource "azurerm_network_interface" "win-host" {
   }
 }
 
+resource "azurerm_network_interface" "ol8" {
+  name                = "ol8-nic"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.management.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.management.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.ol8.id
+  }
+}
+
+resource "azurerm_public_ip" "ol8" {
+  name                = "ol8-publicip"
+  resource_group_name = azurerm_resource_group.management.name
+  location            = var.location
+  allocation_method   = "Dynamic"
+}
 
